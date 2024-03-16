@@ -1,6 +1,6 @@
 {
   "realm": "quickstart",
-  "auth-server-url": "${TF_VAR_ENV_APP_BE_URL}",
+  "auth-server-url": "${TF_VAR_ENV_APP_KC_URL}",
   "ssl-required": "external",
   "resource": "spa",
   "public-client": true
