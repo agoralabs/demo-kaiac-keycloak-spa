@@ -14,7 +14,7 @@ appenvsubstr(){
     | envsubst '$TF_VAR_ENV_APP_BE_LOCAL_PORT' \
     | envsubst '$TF_VAR_ENV_APP_BE_LOCAL_SOURCE_FOLDER' \
     | envsubst '$TF_VAR_ENV_APP_GL_AWS_REGION_ECR' \
-    | envsubst '$TF_VAR_ENV_APP_GL_DOCKER_REPOSITORY' > $p_destination
+    | envsubst '$TF_VAR_ENV_APP_KC_URL' > $p_destination
 }
 
 
