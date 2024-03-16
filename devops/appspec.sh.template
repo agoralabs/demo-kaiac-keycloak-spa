@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPT_MODE="$TF_VAR_ENV_APP_GL_SCRIPT_MODE"
+
+source_folder=$TF_VAR_ENV_APP_BE_LOCAL_SOURCE_FOLDER
+
+aws_region="$TF_VAR_ENV_APP_GL_AWS_REGION_ECR"
+
+docker_repository="$TF_VAR_ENV_APP_GL_DOCKER_REPOSITORY"
+
+#connexion au repo docker AWS
+if [ "$docker_repository" == "docker.io" ] 
+then
+    docker login
+else
+    aws ecr get-login-password --region $aws_region | docker login --username AWS --password-stdin $docker_repository
+fi
+
+#arret des containers
+docker compose -f $source_folder/docker-compose.yml down
+
+#lancement des containers
+docker compose -f $source_folder/docker-compose.yml up -d --build --force-recreate
