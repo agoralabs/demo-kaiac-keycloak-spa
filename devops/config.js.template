@@ -1,4 +1,4 @@
-const baseUrl = '${TF_VAR_ENV_APP_BE_URL}/';
+const baseUrl = '${TF_VAR_ENV_APP_KC_URL}';
 
 export default {
   baseUrl: baseUrl,
