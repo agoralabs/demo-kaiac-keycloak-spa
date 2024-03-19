@@ -1,5 +1,5 @@
 {
-  "realm": "quickstart",
+  "realm": "rcognito",
   "enabled": true,
   "clients": [
     {

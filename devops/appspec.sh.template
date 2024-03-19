@@ -9,10 +9,6 @@ cd  $source_folder
 
 npm install
 
-npm run delete-realm
-
-npm run create-realm
-
 npm run stopd
 
 npm run startd

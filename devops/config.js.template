@@ -7,7 +7,7 @@ export default {
     password: 'password',
     grant_type: 'password',
     client_id: 'test-cli',
-    realmName: 'quickstart'
+    realmName: 'rcognito'
   },
   adminClient: {
     baseUrl: baseUrl,

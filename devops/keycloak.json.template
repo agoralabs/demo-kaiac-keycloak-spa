@@ -1,5 +1,5 @@
 {
-  "realm": "quickstart",
+  "realm": "rcognito",
   "auth-server-url": "${TF_VAR_ENV_APP_KC_URL}",
   "ssl-required": "external",
   "resource": "spa",
