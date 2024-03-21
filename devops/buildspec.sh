@@ -26,3 +26,6 @@ appenvsubstr devops/.env.template .env
 appenvsubstr devops/keycloak.json.template public/keycloak.json
 appenvsubstr devops/config.js.template config/config.js
 appenvsubstr devops/realm-import.json.template config/realm-import.json
+
+appenvsubstr devops/Dockerfile.template Dockerfile
+appenvsubstr devops/docker-compose.yml.template docker-compose.yml
