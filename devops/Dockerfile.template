@@ -13,6 +13,6 @@ COPY . .
 # install project dependencies
 RUN npm install
 
-EXPOSE ${TF_VAR_ENV_APP_FE_LOCAL_PORT}
+EXPOSE ${TF_VAR_ENV_APP_BE_LOCAL_PORT}
 
 CMD [ "npm", "start"]
