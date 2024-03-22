@@ -37,16 +37,25 @@ ECR_REGION="$TF_VAR_ENV_APP_GL_AWS_REGION_ECR"
 ECR_REPOSITORY="${TF_VAR_ENV_APP_GL_NAMESPACE}_${TF_VAR_ENV_APP_GL_NAME}_${TF_VAR_ENV_APP_GL_STAGE}"
 ECR_TAG="${TF_VAR_ENV_APP_GL_NAMESPACE}_${TF_VAR_ENV_APP_GL_NAME}_${TF_VAR_ENV_APP_GL_STAGE}"
 
+
+#Se connecter au repo ECR
+echo "Login into ecr..."
+aws ecr get-login-password --region $ECR_REGION | docker login --username AWS --password-stdin $DOCKER_REGISTRY
+
+#Builder l'image
 echo "Building the Docker image..."
 docker build -t $ECR_REPOSITORY:$ECR_TAG .
 
+#Créer un repo
 echo "Create $ECR_REPOSITORY repository..."
 aws ecr describe-repositories --repository-names $ECR_REPOSITORY --region $ECR_REGION || aws ecr create-repository --repository-name $ECR_REPOSITORY --region $ECR_REGION
 aws ecr delete-repository --repository-name $ECR_REPOSITORY --force
 aws ecr create-repository --repository-name $ECR_REPOSITORY --region $ECR_REGION
 
+#Tagguer l'image
 echo "Tag your image with the Amazon ECR registry..."
 docker tag $ECR_REPOSITORY:$ECR_TAG $DOCKER_REGISTRY/$ECR_REPOSITORY:$ECR_TAG
 
+#Push dans ECR
 echo "Push the image to ecr..."
 docker push $DOCKER_REGISTRY/$ECR_REPOSITORY:$ECR_TAG
